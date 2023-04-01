@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Footer from "./footer";
-import Header from "./header";
 import Section from "./section";
 
 const Components = () => {
   const [contents, setContents] = useState([
+    // data defined as state
+    // their activity will be checked as boolean
     { todoName: "Taste JavaScript", todoActive: true },
     { todoName: "Code furiously ", todoActive: false },
     { todoName: "Promote Mavo ", todoActive: false },
@@ -17,7 +18,7 @@ const Components = () => {
   return (
     <div>
       <div className="todoapp">
-        <Header setContents={setContents} contacts={contents} />
+        {/* The data was transmitted to the section class in the desired format.*/}
         <Section
           data={data}
           setData={setData}

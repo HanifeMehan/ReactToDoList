@@ -1,4 +1,8 @@
-const Section = ({ contents, setContents, data, setdata }) => {
+//Retrieved data from main class
+import { useState } from "react";
+const Section = ({ contents, setContents, data, setData }) => {
+  const [inputText, setInputText] = useState("");
+
   const onClickList = () => {
     setContents(
       contents.map((i) => {
@@ -11,15 +15,18 @@ const Section = ({ contents, setContents, data, setdata }) => {
       })
     );
   };
+
   const handClickAll = (e) => {
+    e.preventDefault();
     setContents(data);
   };
+
   const handClickActive = (e) => {
     e.preventDefault();
-
     setContents(contents.filter((content) => content.todoActive === false));
   };
-  const handClickComplated = (e) => {
+
+  const handClickCompleted = (e) => {
     e.preventDefault();
     setContents(contents.filter((content) => content.todoActive === true));
   };
@@ -30,16 +37,39 @@ const Section = ({ contents, setContents, data, setdata }) => {
   };
 
   const unCompleted = contents.filter((item) => item.todoActive === false);
+//filtering done
+  const filteredContents =
+    inputText.length > 0
+      ? contents.filter((content) =>
+          content.todoName.toLowerCase().includes(inputText.toLowerCase())
+        )
+      : contents;
+
   return (
     <div>
+      <header className="header">
+        <h1>todos</h1>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <input
+            className="new-todo"
+            placeholder="What needs to be done?"
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+            autoFocus
+          />
+        </form>
+      </header>
       <section className="main">
         <input className="toggle-all" type="checkbox" />
         <label htmlFor="toggle-all" onClick={onClickList}>
           Mark all as complete
         </label>
-
         <ul className="todo-list">
-          {contents.map((content, i) => (
+          {filteredContents.map((content, i) => (
             <li key={i} className={content.todoActive ? "completed" : ""}>
               <div className="view">
                 <input
@@ -100,7 +130,7 @@ const Section = ({ contents, setContents, data, setdata }) => {
               href="#/"
               id="completed"
               className={contents.todoActive === true ? "selected" : ""}
-              onClick={handClickComplated}
+              onClick={handClickCompleted}
             >
               Completed
             </a>
