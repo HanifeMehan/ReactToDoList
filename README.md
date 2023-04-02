@@ -1,14 +1,20 @@
 #ReactTodoList
+
+### `yarn`
+### `yarn start`
+
+<div>
 <img
-  src="/src/img-readme/readme.png"
+  src="/src/img/readme.png"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; max-width: 150px">
+  style=" margin: 0 auto; width: 500px; height:450px">
   <img
-  src="/src/img-readme/readme2.png"
+  src="/src/img/readme2.png"
   alt="Alt text"
   title="Optional title"
-  style="display: inline-block; margin: 0 auto; max-width: 150px">
+  style=" margin: 0 auto;width: 500px ; height:450px">
+  <div>
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
